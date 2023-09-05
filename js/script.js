@@ -43,3 +43,36 @@ setTimeout(() => {
 console.log("3. Harry is a bad boy!");
 
 console.log("Async Js End")
+
+// --------------- Promises and Callback
+console.log("* Promises and Callback Js Start")
+// Callbacks and Promises are two common ways to handle 
+// asynchronous operations in JavaScript. 
+// Here's an example that demonstrates both callback-based and 
+// Promise-based approaches to fetching data from a simulated API:
+
+console.log("Callback-Based Approach:")
+// Simulate an asynchronous operation (fetching data from an API)
+function fetchDataWithCallback(callback) {
+    setTimeout(() => {
+      const data = { message: 'Data fetched using callbacks' };
+      // Simulate success and pass data to the callback
+      callback(null, data);
+      
+      // Uncomment the following line to simulate an error:
+    //   callback(new Error('Data fetch failed'));
+    }, 2000); // Simulate a 2-second delay
+  }
+  
+  // Using the Callback
+  fetchDataWithCallback((error, result) => {
+    if (error) {
+      console.error(error.message); // Data fetch failed
+    } else {
+      console.log(result.message); // Data fetched using callbacks
+    }
+  });
+  
+
+
+console.log("Promises and Callback Js End")
