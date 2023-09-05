@@ -55,24 +55,47 @@ console.log("Callback-Based Approach:")
 // Simulate an asynchronous operation (fetching data from an API)
 function fetchDataWithCallback(callback) {
     setTimeout(() => {
-      const data = { message: 'Data fetched using callbacks' };
-      // Simulate success and pass data to the callback
-      callback(null, data);
+        const data = { message: 'Data fetched using callbacks' };
+        // Simulate success and pass data to the callback
+        callback(null, data);
+        
+        // Uncomment the following line to simulate an error:
+        //   callback(new Error('Data fetch failed'));
+    }, 800); // Simulate a 2-second delay
+}
+
+// Using the Callback
+fetchDataWithCallback((error, result) => {
+    if (error) {
+        console.error(error.message); // Data fetch failed
+    } else {
+        console.log(result.message); // Data fetched using callbacks
+    }
+});
+
+console.log("Promise-Based Approach:")
+// Simulate an asynchronous operation (fetching data from an API) using Promises
+function fetchDataWithPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = { message: 'Data fetched using Promises' };
+      // Simulate success and resolve the Promise with data
+      resolve(data);
       
       // Uncomment the following line to simulate an error:
-    //   callback(new Error('Data fetch failed'));
-    }, 2000); // Simulate a 2-second delay
-  }
-  
-  // Using the Callback
-  fetchDataWithCallback((error, result) => {
-    if (error) {
-      console.error(error.message); // Data fetch failed
-    } else {
-      console.log(result.message); // Data fetched using callbacks
-    }
+      // reject(new Error('Data fetch failed'));
+    }, 500); // Simulate a 2-second delay
   });
-  
+}
+
+// Using Promises
+fetchDataWithPromise()
+  .then((result) => {
+    console.log(result.message); // Data fetched using Promises
+  })
+  .catch((error) => {
+    console.error(error.message); // Data fetch failed
+  });
 
 
 console.log("Promises and Callback Js End")
